@@ -9,24 +9,38 @@
         div {
             color: red;
         }
+        my-counter {
+            --counter-color: grey;
+        }
         </style>
 </head>
 
 <body>
     <h1>hello world</h1>
-    <my-counter><h2>Counter 1</h2></my-counter>
-    <my-counter><h3>Counter 2</h3></my-counter>
+    <my-counter><h2 slot="title">Counter 1</h2><button type="button" slot="increase">increase</button></my-counter>
+    <my-counter><h1>alma</h1><h3 slot="title">Counter 2</h3><h1>korte</h1></my-counter>
     <template id="my-counter">
         <style>
+            :host > div {
+               border: 1px solid red; 
+            }
+
+            ::slotted(h2) {
+                color: purple;
+            }
+
             div {
-                color: green;
+                color: var(--counter-color, green);
             }
             h2 {
                 color: green;
             }
         </style>
-        <slot></slot>
+        <slot name="title"></slot>
         <div id="value">0</div>
+        <slot name="increase"><button type="button">+</button></slot>
+        EXTRAS:
+        <slot></slot>
     </template>
 </body>
 
@@ -41,6 +55,8 @@
             console.log('MyCounterElement Created', this);
             const shadow = this.attachShadow({mode: 'open'});
             shadow.appendChild(template.cloneNode(true));
+
+            //console.log(':host', this.querySelector(':host'));
         }
     }
 
