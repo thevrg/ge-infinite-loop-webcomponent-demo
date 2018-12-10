@@ -1,0 +1,15 @@
+{
+  "name": "webcomponent-demo",
+  "version": "1.0.0",
+  "description": "Web Component Demo",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "VRG",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
